@@ -5,7 +5,7 @@ const thoughtsSchema = new Schema(
    thoughtText:  {
         type: String,
         required: true,
-        maxLength: 20,
+        maxLength: 280,
 
     },
 
@@ -23,10 +23,18 @@ const thoughtsSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: "Reaction"
         }
-    ]
+    ],
+    },
+    {
+        toJSON: {
+            virtuals: true,
+        },
+        id: false,
+    },
+
  
 
-})
+)
 
 const Thoughts = model("Thoughts", thoughtSchema);
 
